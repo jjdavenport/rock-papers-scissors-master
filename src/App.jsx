@@ -1,7 +1,7 @@
 import Header from "./components/header";
 import Buttons from "./components/buttons";
 import Rules from "./components/rules";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RulesModal from "./components/rules-modal";
 import Footer from "./components/footer";
 import Picked from "./components/picked";
@@ -18,6 +18,17 @@ function App() {
   const [playerImage, setPlayerImage] = useState(null);
   const [computerImage, setComputerImage] = useState(null);
   const choices = ["rock", "paper", "scissors"];
+  const [result, setResult] = useState(false);
+
+  const reset = () => {
+    setComputer(null);
+    setPlayer(null);
+    setComputer(null);
+    setPicked(false);
+    setComputerImage(null);
+    setPlayerImage(null);
+    setResult(false);
+  };
 
   const play = () => {
     const random = choices[Math.floor(Math.random() * choices.length)];
@@ -30,6 +41,28 @@ function App() {
       setComputerImage(scissorsIcon);
     }
   };
+
+  const game = () => {
+    if (player === computer) {
+      return;
+    }
+    if (
+      (player === "rock" && computer === "scissors") ||
+      (player === "paper" && computer === "rock") ||
+      (player === "scissors" && computer === "paper")
+    ) {
+      setResult(true);
+      setScore((prev) => prev + 1);
+    } else {
+      return;
+    }
+  };
+
+  useEffect(() => {
+    if (player && computer) {
+      game();
+    }
+  }, [computer, player]);
 
   const pick = (picked) => {
     setPicked(true);
@@ -51,6 +84,8 @@ function App() {
           <Header score={score} />
           {picked ? (
             <Picked
+              result={result}
+              reset={reset}
               playerChoice={player}
               computerChoice={computer}
               paper={paperIcon}
