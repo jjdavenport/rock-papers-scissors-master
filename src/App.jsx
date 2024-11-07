@@ -15,23 +15,33 @@ function App() {
   const [player, setPlayer] = useState(null);
   const [computer, setComputer] = useState(null);
   const [picked, setPicked] = useState(false);
-  const [image, setImage] = useState(null);
+  const [playerImage, setPlayerImage] = useState(null);
+  const [computerImage, setComputerImage] = useState(null);
   const choices = ["rock", "paper", "scissors"];
 
-  const play = (choice) => {
-    setComputer(choices);
+  const play = () => {
+    const random = choices[Math.floor(Math.random() * choices.length)];
+    setComputer(random);
+    if (random === "paper") {
+      setComputerImage(paperIcon);
+    } else if (random === "rock") {
+      setComputerImage(rockIcon);
+    } else if (random === "scissors") {
+      setComputerImage(scissorsIcon);
+    }
   };
 
   const pick = (picked) => {
     setPicked(true);
     setPlayer(picked);
     if (picked === "paper") {
-      setImage(paperIcon);
+      setPlayerImage(paperIcon);
     } else if (picked === "rock") {
-      setImage(rockIcon);
+      setPlayerImage(rockIcon);
     } else if (picked === "scissors") {
-      setImage(scissorsIcon);
+      setPlayerImage(scissorsIcon);
     }
+    play();
   };
 
   return (
@@ -41,12 +51,14 @@ function App() {
           <Header score={score} />
           {picked ? (
             <Picked
+              playerChoice={player}
+              computerChoice={computer}
               paper={paperIcon}
               rock={rockIcon}
               scissors={scissorsIcon}
               picked={picked}
-              image={image}
-              bg={player}
+              playerImage={playerImage}
+              computerImage={computerImage}
             />
           ) : (
             <Buttons

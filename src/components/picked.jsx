@@ -1,14 +1,20 @@
-const Picked = ({ picked, image, bg }) => {
+const Picked = ({
+  picked,
+  playerImage,
+  playerChoice,
+  computerChoice,
+  computerImage,
+}) => {
   return (
     <>
       <main className="flex gap-10">
         <div className="flex flex-col items-center gap-4">
           {picked ? (
             <div
-              className={`${bg === "rock" && "from-rockGradientStart to-rockGradientEnd"} ${bg === "paper" && "from-paperGradientStart to-paperGradientEnd"} ${bg === "scissors" && "from-scissorsGradientStart to-scissorsGradientEnd"} rounded-full bg-gradient-to-t p-4`}
+              className={`${playerChoice === "rock" && "from-rockGradientStart to-rockGradientEnd"} ${playerChoice === "paper" && "from-paperGradientStart to-paperGradientEnd"} ${playerChoice === "scissors" && "from-scissorsGradientStart to-scissorsGradientEnd"} rounded-full bg-gradient-to-t p-4`}
             >
               <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white">
-                <img src={image} />
+                <img src={playerImage} />
               </div>
             </div>
           ) : (
@@ -20,13 +26,15 @@ const Picked = ({ picked, image, bg }) => {
         </div>
         <div className="flex flex-col items-center gap-4">
           {picked ? (
-            <div className="h-32 w-32 rounded-full bg-radialGradientEnd"></div>
-          ) : (
-            <button className="rounded-full bg-gradient-to-t from-paperGradientStart to-paperGradientEnd p-4">
-              <div className="flex h-36 w-36 items-center justify-center rounded-full bg-white">
-                <img src={image} />
+            <div
+              className={`${computerChoice === "rock" && "from-rockGradientStart to-rockGradientEnd"} ${computerChoice === "paper" && "from-paperGradientStart to-paperGradientEnd"} ${computerChoice === "scissors" && "from-scissorsGradientStart to-scissorsGradientEnd"} rounded-full bg-gradient-to-t p-4`}
+            >
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white">
+                <img src={computerImage} />
               </div>
-            </button>
+            </div>
+          ) : (
+            <div className="h-36 w-36 rounded-full bg-radialGradientEnd"></div>
           )}
           <span className="uppercase tracking-wider text-white">
             The House Picked
