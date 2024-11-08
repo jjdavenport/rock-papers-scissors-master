@@ -8,6 +8,7 @@ import Picked from "./components/picked";
 import paperIcon from "./components/assets/icon-paper.svg";
 import scissorsIcon from "./components/assets/icon-scissors.svg";
 import rockIcon from "./components/assets/icon-rock.svg";
+import { useMediaQuery } from "react-responsive";
 
 function App() {
   const [score, setScore] = useState(0);
@@ -19,6 +20,7 @@ function App() {
   const [computerImage, setComputerImage] = useState(null);
   const choices = ["rock", "paper", "scissors"];
   const [result, setResult] = useState(false);
+  const media = useMediaQuery({ minWidth: 768 });
 
   const reset = () => {
     setComputer(null);
@@ -80,7 +82,7 @@ function App() {
   return (
     <>
       <div className="flex h-full min-h-screen flex-col gap-4 bg-gradient-to-b from-radialGradientStart to-radialGradientEnd font-custom text-base">
-        <div className="flex flex-1 flex-col items-center justify-between font-semibold">
+        <div className="~sm/md:~p-4/5 flex flex-1 flex-col items-center justify-between font-semibold">
           <Header score={score} />
           {picked ? (
             <Picked
@@ -104,7 +106,9 @@ function App() {
             />
           )}
           <Rules onClick={() => setRulesModal(true)} />
-          {rulesModal && <RulesModal onClose={() => setRulesModal(false)} />}
+          {rulesModal && (
+            <RulesModal desktop={media} onClose={() => setRulesModal(false)} />
+          )}
         </div>
         <Footer />
       </div>

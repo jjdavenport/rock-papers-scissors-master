@@ -1,7 +1,13 @@
+import fluid, { extract, screens } from "fluid-tailwind";
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js,jsx}", "./index.html"],
+  content: {
+    files: ["./src/**/*.{html,js,jsx}", "./index.html"],
+    extract,
+  },
   theme: {
+    screens,
     extend: {
       fontFamily: {
         custom: ["barlow semi condensed", "sans-serif"],
@@ -34,5 +40,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [fluid],
 };

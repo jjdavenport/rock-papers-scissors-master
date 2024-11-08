@@ -2,21 +2,21 @@ const Buttons = ({ onClick, rock, paper, scissors }) => {
   return (
     <>
       <main className="flex w-full flex-col">
-        <div className="bg-triangle bg-center bg-no-repeat">
-          <div className="flex justify-center gap-4">
+        <div className="flex flex-col bg-triangle bg-center bg-no-repeat md:gap-10">
+          <div className="flex justify-center gap-4 md:gap-20">
             <button
               onClick={() => onClick("paper")}
-              className="rounded-full bg-gradient-to-t from-paperGradientStart to-paperGradientEnd p-4"
+              className="~sm/md:~p-4/8 rounded-full bg-gradient-to-t from-paperGradientStart to-paperGradientEnd"
             >
-              <div className="flex h-32 w-32 items-center justify-center rounded-full bg-white">
+              <div className="~sm/md:~h-32/40 ~sm/md:~w-32/40 flex items-center justify-center rounded-full bg-white">
                 <img src={paper} />
               </div>
             </button>
             <button
               onClick={() => onClick("scissors")}
-              className="rounded-full bg-gradient-to-t from-scissorsGradientStart to-scissorsGradientEnd p-4"
+              className="~sm/md:~p-4/8 rounded-full bg-gradient-to-t from-scissorsGradientStart to-scissorsGradientEnd"
             >
-              <div className="flex h-32 w-32 items-center justify-center rounded-full bg-white">
+              <div className="~sm/md:~h-32/40 ~sm/md:~w-32/40 flex items-center justify-center rounded-full bg-white">
                 <img src={scissors} />
               </div>
             </button>
@@ -24,9 +24,9 @@ const Buttons = ({ onClick, rock, paper, scissors }) => {
           <div className="flex justify-center">
             <button
               onClick={() => onClick("rock")}
-              className="rounded-full bg-gradient-to-t from-rockGradientStart to-rockGradientEnd p-4"
+              className="~sm/md:~p-4/8 rounded-full bg-gradient-to-t from-rockGradientStart to-rockGradientEnd"
             >
-              <div className="flex h-32 w-32 items-center justify-center rounded-full bg-white">
+              <div className="~sm/md:~h-32/40 ~sm/md:~w-32/40 flex items-center justify-center rounded-full bg-white">
                 <img src={rock} />
               </div>
             </button>
