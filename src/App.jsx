@@ -19,7 +19,7 @@ function App() {
   const [playerImage, setPlayerImage] = useState(null);
   const [computerImage, setComputerImage] = useState(null);
   const choices = ["rock", "paper", "scissors"];
-  const [result, setResult] = useState(false);
+  const [result, setResult] = useState(null);
   const media = useMediaQuery({ minWidth: 768 });
 
   const reset = () => {
@@ -46,23 +46,24 @@ function App() {
 
   const game = () => {
     if (player === computer) {
-      return;
-    }
-    if (
+      setResult("Draw");
+    } else if (
       (player === "rock" && computer === "scissors") ||
       (player === "paper" && computer === "rock") ||
       (player === "scissors" && computer === "paper")
     ) {
-      setResult(true);
+      setResult("Win");
       setScore((prev) => prev + 1);
     } else {
-      return;
+      setResult("Lose");
     }
   };
 
   useEffect(() => {
     if (player && computer) {
-      game();
+      setTimeout(() => {
+        game();
+      }, 2000);
     }
   }, [computer, player]);
 
@@ -82,7 +83,7 @@ function App() {
   return (
     <>
       <div className="flex h-full min-h-screen flex-col gap-4 bg-gradient-to-b from-radialGradientStart to-radialGradientEnd font-custom text-base">
-        <div className="~sm/md:~p-4/5 flex flex-1 flex-col items-center justify-between font-semibold">
+        <div className="flex flex-1 flex-col items-center justify-between font-semibold ~sm/md:~p-0/5">
           <Header score={score} />
           {picked ? (
             <Picked
@@ -94,7 +95,6 @@ function App() {
               paper={paperIcon}
               rock={rockIcon}
               scissors={scissorsIcon}
-              picked={picked}
               playerImage={playerImage}
               computerImage={computerImage}
             />

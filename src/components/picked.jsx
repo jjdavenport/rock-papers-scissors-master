@@ -1,10 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Result from "./result";
 import Empty from "./empty";
 import Choice from "./choice";
 
 const Picked = ({
-  picked,
   playerImage,
   playerChoice,
   computerChoice,
@@ -13,70 +12,74 @@ const Picked = ({
   result,
   desktop,
 }) => {
-  useEffect(() => {
-    setTimeout;
+  const [active, setActive] = useState({
+    computerChoice: false,
+    result: false,
   });
+
+  useEffect(() => {
+    const computerTimer = setTimeout(() => {
+      setActive((prev) => ({ ...prev, computerChoice: true }));
+    }, 1000);
+
+    const resultTimer = setTimeout(() => {
+      setActive((prev) => ({ ...prev, result: true }));
+    }, 2000);
+
+    return () => {
+      clearTimeout(computerTimer);
+      clearTimeout(resultTimer);
+    };
+  }, []);
 
   if (desktop) {
     return (
-      <>
-        <main className="~md/lg:gap-10/20 flex w-full flex-col items-center">
-          <div className="flex items-center gap-10">
-            <div className="flex flex-col items-center gap-4">
-              <span className="uppercase tracking-widest text-white">
-                You Picked
-              </span>
-              {picked ? (
-                <Choice choice={playerChoice} image={playerImage} />
-              ) : (
-                <Empty />
-              )}
-            </div>
-            <Result winner={result} onClick={reset} />
-            <div className="flex flex-col items-center gap-4">
-              <span className="uppercase tracking-widest text-white">
-                The House Picked
-              </span>
-              {picked ? (
-                <Choice choice={computerChoice} image={computerImage} />
-              ) : (
-                <Empty />
-              )}
-            </div>
-          </div>
-        </main>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <main className="flex w-full flex-col items-center gap-20">
-        <div className="flex w-full flex-1">
-          <div className="flex w-full flex-col items-center gap-4">
-            {picked ? (
-              <Choice choice={playerChoice} image={playerImage} />
-            ) : (
-              <Empty />
-            )}
+      <main className="~md/lg:gap-10/20 flex w-full flex-col items-center">
+        <div className="flex items-center gap-10">
+          <div className="flex flex-col items-center gap-4">
             <span className="uppercase tracking-widest text-white">
               You Picked
             </span>
+            <Choice choice={playerChoice} image={playerImage} />
           </div>
-          <div className="flex w-full flex-col items-center gap-4">
-            {picked ? (
+          {active.result && <Result result={result} onClick={reset} />}
+          <div className="flex flex-col items-center gap-4">
+            <span className="uppercase tracking-widest text-white">
+              The House Picked
+            </span>
+            {active.computerChoice ? (
               <Choice choice={computerChoice} image={computerImage} />
             ) : (
               <Empty />
             )}
-            <span className="uppercase tracking-widest text-white">
-              The House Picked
-            </span>
           </div>
         </div>
-        <Result winner={result} onClick={reset} />
       </main>
-    </>
+    );
+  }
+
+  return (
+    <main className="flex w-full flex-col items-center gap-10">
+      <div className="flex w-full flex-1">
+        <div className="flex w-full flex-col items-center gap-4">
+          <Choice choice={playerChoice} image={playerImage} />
+          <span className="uppercase tracking-widest text-white">
+            You Picked
+          </span>
+        </div>
+        <div className="flex w-full flex-col items-center gap-4">
+          {active.computerChoice ? (
+            <Choice choice={computerChoice} image={computerImage} />
+          ) : (
+            <Empty />
+          )}
+          <span className="uppercase tracking-widest text-white">
+            The House Picked
+          </span>
+        </div>
+      </div>
+      {active.result && <Result result={result} onClick={reset} />}
+    </main>
   );
 };
 
