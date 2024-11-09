@@ -34,7 +34,7 @@ const RulesModal = ({ onClose, desktop }) => {
           Rules
         </span>
         <img src={rulesImg} alt="Rules" />
-        <button onClick={onClose} className="group mt-4">
+        <button onClick={onClose} className="group">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
             <path
               className="fill-[#3B4262] opacity-25 transition-all duration-300 ease-in-out group-hover:fill-darkText group-hover:opacity-100"

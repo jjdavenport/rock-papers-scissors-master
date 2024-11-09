@@ -6,7 +6,7 @@ const Result = ({ onClick, winner }) => {
           {winner ? "You Win" : "You lose"}
         </h3>
         <button
-          className="w-full rounded-md bg-white py-2 text-base uppercase tracking-widest text-radialGradientEnd"
+          className="w-full rounded-md bg-white py-2 text-base font-bold uppercase tracking-widest text-radialGradientEnd transition-colors duration-300 ease-in-out hover:text-rockGradientStart"
           onClick={onClick}
         >
           Play Again

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import Result from "./result";
+import Empty from "./empty";
+import Choice from "./choice";
 
 const Picked = ({
   picked,
@@ -9,10 +11,43 @@ const Picked = ({
   computerImage,
   reset,
   result,
+  desktop,
 }) => {
   useEffect(() => {
     setTimeout;
   });
+
+  if (desktop) {
+    return (
+      <>
+        <main className="~md/lg:gap-10/20 flex w-full flex-col items-center">
+          <div className="flex items-center gap-10">
+            <div className="flex flex-col items-center gap-4">
+              <span className="uppercase tracking-widest text-white">
+                You Picked
+              </span>
+              {picked ? (
+                <Choice choice={playerChoice} image={playerImage} />
+              ) : (
+                <Empty />
+              )}
+            </div>
+            <Result winner={result} onClick={reset} />
+            <div className="flex flex-col items-center gap-4">
+              <span className="uppercase tracking-widest text-white">
+                The House Picked
+              </span>
+              {picked ? (
+                <Choice choice={computerChoice} image={computerImage} />
+              ) : (
+                <Empty />
+              )}
+            </div>
+          </div>
+        </main>
+      </>
+    );
+  }
 
   return (
     <>
@@ -20,15 +55,9 @@ const Picked = ({
         <div className="flex w-full flex-1">
           <div className="flex w-full flex-col items-center gap-4">
             {picked ? (
-              <div
-                className={`${playerChoice === "rock" && "from-rockGradientStart to-rockGradientEnd"} ${playerChoice === "paper" && "from-paperGradientStart to-paperGradientEnd"} ${playerChoice === "scissors" && "from-scissorsGradientStart to-scissorsGradientEnd"} rounded-full bg-gradient-to-t p-4`}
-              >
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white">
-                  <img src={playerImage} />
-                </div>
-              </div>
+              <Choice choice={playerChoice} image={playerImage} />
             ) : (
-              <div className="h-36 w-36 rounded-full bg-radialGradientEnd"></div>
+              <Empty />
             )}
             <span className="uppercase tracking-widest text-white">
               You Picked
@@ -36,15 +65,9 @@ const Picked = ({
           </div>
           <div className="flex w-full flex-col items-center gap-4">
             {picked ? (
-              <div
-                className={`${computerChoice === "rock" && "from-rockGradientStart to-rockGradientEnd"} ${computerChoice === "paper" && "from-paperGradientStart to-paperGradientEnd"} ${computerChoice === "scissors" && "from-scissorsGradientStart to-scissorsGradientEnd"} rounded-full bg-gradient-to-t p-4`}
-              >
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white">
-                  <img src={computerImage} />
-                </div>
-              </div>
+              <Choice choice={computerChoice} image={computerImage} />
             ) : (
-              <div className="h-36 w-36 rounded-full bg-radialGradientEnd"></div>
+              <Empty />
             )}
             <span className="uppercase tracking-widest text-white">
               The House Picked

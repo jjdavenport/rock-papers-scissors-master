@@ -86,6 +86,7 @@ function App() {
           <Header score={score} />
           {picked ? (
             <Picked
+              desktop={media}
               result={result}
               reset={reset}
               playerChoice={player}
