@@ -40,7 +40,11 @@ const Picked = ({
             <span className="uppercase tracking-widest text-white">
               You Picked
             </span>
-            <Choice choice={playerChoice} image={playerImage} />
+            <Choice
+              winner={result === "Win"}
+              choice={playerChoice}
+              image={playerImage}
+            />
           </div>
           {active.result && <Result result={result} onClick={reset} />}
           <div className="flex flex-col items-center gap-4">
@@ -48,7 +52,11 @@ const Picked = ({
               The House Picked
             </span>
             {active.computerChoice ? (
-              <Choice choice={computerChoice} image={computerImage} />
+              <Choice
+                winner={result === "Lose"}
+                choice={computerChoice}
+                image={computerImage}
+              />
             ) : (
               <Empty />
             )}
@@ -59,17 +67,25 @@ const Picked = ({
   }
 
   return (
-    <main className="flex w-full flex-col items-center gap-10">
-      <div className="flex w-full flex-1">
+    <main className="flex w-full flex-1 flex-col items-center justify-center gap-10">
+      <div className="flex w-full items-center">
         <div className="flex w-full flex-col items-center gap-4">
-          <Choice choice={playerChoice} image={playerImage} />
+          <Choice
+            winner={result === "Win"}
+            choice={playerChoice}
+            image={playerImage}
+          />
           <span className="uppercase tracking-widest text-white">
             You Picked
           </span>
         </div>
         <div className="flex w-full flex-col items-center gap-4">
           {active.computerChoice ? (
-            <Choice choice={computerChoice} image={computerImage} />
+            <Choice
+              winner={result === "Lose"}
+              choice={computerChoice}
+              image={computerImage}
+            />
           ) : (
             <Empty />
           )}

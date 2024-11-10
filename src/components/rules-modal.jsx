@@ -16,9 +16,9 @@ const RulesModal = ({ onClose, desktop }) => {
 
   if (desktop) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out">
+      <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out">
         <dialog
-          className={`flex flex-col items-center justify-evenly gap-14 rounded-lg bg-white p-8 md:max-w-md md:transition-all md:duration-300 ${
+          className={`z-50 flex flex-col items-center justify-evenly gap-14 rounded-lg bg-white p-8 md:max-w-md md:transition-all md:duration-300 ${
             active ? "scale-100 opacity-100" : "scale-95 opacity-0"
           }`}
         >
@@ -43,9 +43,9 @@ const RulesModal = ({ onClose, desktop }) => {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out">
+    <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out">
       <dialog
-        className={`flex h-full w-full transform flex-col items-center justify-evenly rounded-lg bg-white p-6 transition-all duration-300 ${
+        className={`z-50 flex h-full w-full transform flex-col items-center justify-evenly bg-white p-6 transition-all duration-300 ${
           active ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         } md:h-fit md:max-w-md`}
       >

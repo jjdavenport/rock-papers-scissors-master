@@ -1,7 +1,7 @@
 const Empty = () => {
   return (
     <>
-      <div className="rounded-full bg-radialGradientEnd ~md/lg:~h-32/48 ~md/lg:~w-32/48"></div>
+      <div className="rounded-full bg-radialGradientEnd ~md/lg:~h-40/60 ~md/lg:~w-40/60"></div>
     </>
   );
 };
