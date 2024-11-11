@@ -35,9 +35,9 @@ const Picked = ({
   if (desktop) {
     return (
       <main className="~md/lg:gap-10/20 flex w-full flex-col items-center">
-        <div className="flex items-center gap-10">
-          <div className="flex flex-col items-center gap-4">
-            <span className="uppercase tracking-widest text-white">
+        <div className="flex items-center ~sm/lg:~gap-10/16">
+          <div className="flex flex-col items-center ~sm/lg:~gap-4/10">
+            <span className="uppercase tracking-widest text-white ~sm/lg:~text-base/3xl">
               You Picked
             </span>
             <Choice
@@ -47,8 +47,8 @@ const Picked = ({
             />
           </div>
           {active.result && <Result result={result} onClick={reset} />}
-          <div className="flex flex-col items-center gap-4">
-            <span className="uppercase tracking-widest text-white">
+          <div className="flex flex-col items-center ~sm/lg:~gap-4/10">
+            <span className="uppercase tracking-widest text-white ~sm/lg:~text-base/3xl">
               The House Picked
             </span>
             {active.computerChoice ? (

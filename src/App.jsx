@@ -82,8 +82,8 @@ function App() {
 
   return (
     <>
-      <div className="flex h-full min-h-screen flex-col gap-4 bg-gradient-to-b from-radialGradientStart to-radialGradientEnd font-custom text-base md:overflow-hidden">
-        <div className="flex flex-1 flex-col items-center justify-between font-semibold ~sm/md:~p-0/5">
+      <div className="flex h-full min-h-screen flex-col gap-4 overflow-hidden bg-gradient-to-b from-radialGradientStart to-radialGradientEnd font-custom text-base">
+        <div className="flex flex-1 flex-col items-center justify-between font-semibold ~sm/md:~p-0/8">
           <Header score={score} />
           {picked ? (
             <Picked

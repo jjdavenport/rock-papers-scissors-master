@@ -34,6 +34,9 @@ export default {
 
         radialGradientStart: "hsl(214, 47%, 23%)",
         radialGradientEnd: "hsl(237, 49%, 15%)",
+        redBorder: "hsl(347, 74%, 35%)",
+        blueBorder: "hsl(229, 65%, 46%)",
+        yellowBorder: "hsl(28, 51%, 47%)",
       },
       backgroundImage: {
         triangle: "url('../src/components/assets/bg-triangle.svg')",

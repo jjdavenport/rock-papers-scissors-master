@@ -3,7 +3,7 @@ const Rules = ({ onClick }) => {
     <>
       <section className="flex w-full justify-center md:justify-end">
         <button
-          className="rounded-md px-7 py-1 uppercase tracking-widest text-white outline outline-2 outline-headerOutline transition-colors duration-300 hover:bg-white hover:text-radialGradientEnd hover:outline-white"
+          className="rounded-lg uppercase tracking-widest text-white outline outline-2 outline-headerOutline transition-colors duration-300 hover:bg-white hover:text-radialGradientEnd hover:outline-white ~sm/md:~px-7/8 ~sm/md:~py-1/2 md:rounded-lg"
           onClick={onClick}
         >
           Rules
