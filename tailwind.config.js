@@ -34,12 +34,22 @@ export default {
 
         radialGradientStart: "hsl(214, 47%, 23%)",
         radialGradientEnd: "hsl(237, 49%, 15%)",
+
         redBorder: "hsl(347, 74%, 35%)",
         blueBorder: "hsl(229, 65%, 46%)",
         yellowBorder: "hsl(28, 51%, 47%)",
       },
       backgroundImage: {
         triangle: "url('../src/components/assets/bg-triangle.svg')",
+      },
+      keyframes: {
+        "pulse-custom": {
+          "0%, 100%": { opacity: "0.01" },
+          "50%": { opacity: "0.1" },
+        },
+      },
+      animation: {
+        pulseCustom: "pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },

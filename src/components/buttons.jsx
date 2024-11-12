@@ -6,7 +6,7 @@ const Buttons = ({ onClick, rock, paper, scissors }) => {
           <div className="flex ~sm/md:~gap-8/16">
             <button
               onClick={() => onClick("paper")}
-              className="border-blueBorder rounded-full border-b-8 bg-gradient-to-t from-paperGradientStart to-paperGradientEnd ~sm/md:~p-4/6 md:static"
+              className="rounded-full border-b-8 border-blueBorder bg-gradient-to-t from-paperGradientStart to-paperGradientEnd ~sm/md:~p-4/6 md:static"
             >
               <div className="flex items-center justify-center rounded-full border-t-8 bg-white ~sm/md:~h-28/36 ~sm/md:~w-28/36">
                 <img className="mb-2 ~sm/md:~w-12/16" src={paper} />
@@ -14,7 +14,7 @@ const Buttons = ({ onClick, rock, paper, scissors }) => {
             </button>
             <button
               onClick={() => onClick("scissors")}
-              className="border-yellowBorder rounded-full border-b-8 bg-gradient-to-t from-scissorsGradientStart to-scissorsGradientEnd ~sm/md:~p-4/6"
+              className="rounded-full border-b-8 border-yellowBorder bg-gradient-to-t from-scissorsGradientStart to-scissorsGradientEnd ~sm/md:~p-4/6"
             >
               <div className="flex items-center justify-center rounded-full border-t-8 bg-white ~sm/md:~h-28/36 ~sm/md:~w-28/36">
                 <img className="mb-2 ~sm/md:~w-12/16" src={scissors} />
@@ -24,7 +24,7 @@ const Buttons = ({ onClick, rock, paper, scissors }) => {
           <div className="flex">
             <button
               onClick={() => onClick("rock")}
-              className="border-redBorder rounded-full border-b-8 bg-gradient-to-t from-rockGradientStart to-rockGradientEnd ~sm/md:~p-4/6"
+              className="rounded-full border-b-8 border-redBorder bg-gradient-to-t from-rockGradientStart to-rockGradientEnd ~sm/md:~p-4/6"
             >
               <div className="flex items-center justify-center rounded-full border-t-8 bg-white ~sm/md:~h-28/36 ~sm/md:~w-28/36">
                 <img className="mb-2 ~sm/md:~w-12/16" src={rock} />
