@@ -9,6 +9,7 @@ import paperIcon from "./components/assets/icon-paper.svg";
 import scissorsIcon from "./components/assets/icon-scissors.svg";
 import rockIcon from "./components/assets/icon-rock.svg";
 import { useMediaQuery } from "react-responsive";
+import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   const [score, setScore] = useState(0);
@@ -85,27 +86,45 @@ function App() {
       <div className="flex h-full min-h-screen flex-col gap-4 overflow-hidden bg-gradient-to-b from-radialGradientStart to-radialGradientEnd font-custom text-base">
         <div className="flex flex-1 flex-col items-center justify-between font-semibold ~sm/md:~p-0/8">
           <Header score={score} />
-          {picked ? (
-            <Picked
-              desktop={media}
-              result={result}
-              reset={reset}
-              playerChoice={player}
-              computerChoice={computer}
-              paper={paperIcon}
-              rock={rockIcon}
-              scissors={scissorsIcon}
-              playerImage={playerImage}
-              computerImage={computerImage}
-            />
-          ) : (
-            <Buttons
-              paper={paperIcon}
-              rock={rockIcon}
-              scissors={scissorsIcon}
-              onClick={pick}
-            />
-          )}
+          <AnimatePresence mode="wait">
+            {picked ? (
+              <motion.div
+                key="picked"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Picked
+                  desktop={media}
+                  result={result}
+                  reset={reset}
+                  playerChoice={player}
+                  computerChoice={computer}
+                  paper={paperIcon}
+                  rock={rockIcon}
+                  scissors={scissorsIcon}
+                  playerImage={playerImage}
+                  computerImage={computerImage}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="buttons"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 50 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Buttons
+                  paper={paperIcon}
+                  rock={rockIcon}
+                  scissors={scissorsIcon}
+                  onClick={pick}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
           <Rules onClick={() => setRulesModal(true)} />
           {rulesModal && (
             <RulesModal desktop={media} onClose={() => setRulesModal(false)} />
